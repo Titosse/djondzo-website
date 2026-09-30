@@ -27,13 +27,6 @@ import {
   Wallet,
 } from "lucide-react";
 import { DjondzoMark } from "@/components/brand";
-import type { DjondzoPublicStats } from "@/lib/public-stats";
-
-type DashboardPublicStats = Pick<
-  DjondzoPublicStats,
-  "students" | "teachers" | "classes"
->;
-
 
 function WindowShell({
   area,
@@ -82,13 +75,7 @@ function PlaceholderValue() {
   return <span className="tabular-nums">—</span>;
 }
 
-export function AdminDashboardPreview({
-  compact = false,
-  stats,
-}: {
-  compact?: boolean;
-  stats?: DashboardPublicStats;
-}) {
+export function AdminDashboardPreview({ compact = false }: { compact?: boolean }) {
   return (
     <WindowShell
       area="Administração"
@@ -109,23 +96,6 @@ export function AdminDashboardPreview({
           <button type="button" className="dj-preview-primary" tabIndex={-1}>
             + Nova acção
           </button>
-        </div>
-
-        <div className="dj-kpi-strip mb-3">
-          {[
-            ["Alunos", stats?.students],
-            ["Professores", stats?.teachers],
-            ["Turmas", stats?.classes],
-          ].map(([label, value]) => (
-            <div key={String(label)} className="dj-kpi-cell">
-              <span>{String(label)}</span>
-              <strong>
-                {typeof value === "number"
-                  ? new Intl.NumberFormat("pt-MZ").format(value)
-                  : "—"}
-              </strong>
-            </div>
-          ))}
         </div>
 
         <section className="dj-finance-priority">

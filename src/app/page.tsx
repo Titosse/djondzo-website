@@ -10,7 +10,6 @@ import {
   UsersRound,
 } from "lucide-react";
 import { ProductPreview } from "@/components/product-preview";
-import { PublicStats } from "@/components/public-stats";
 import { SectionHeading } from "@/components/section-heading";
 import { PriceCalculator } from "@/components/price-calculator";
 import { MobileAppShowcase } from "@/components/mobile-app-showcase";
@@ -26,7 +25,6 @@ import {
 } from "@/components/djondzo-previews";
 import { posts } from "@/data/posts";
 import { siteConfig } from "@/config/site";
-import { getDjondzoPublicStats } from "@/lib/public-stats";
 
 const profiles = [
   "Administração",
@@ -77,9 +75,7 @@ const capabilities = [
   },
 ];
 
-export default async function HomePage() {
-  const publicStats = await getDjondzoPublicStats();
-
+export default function HomePage() {
   return (
     <main id="main-content">
       <section className="home-hero border-b border-[var(--color-border)] bg-white">
@@ -115,7 +111,7 @@ export default async function HomePage() {
 
           <div className="hero-preview mx-auto mt-12 max-w-[980px] lg:mt-14">
             <div className="home-product-stage home-product-stage-centered">
-              <ProductPreview stats={publicStats} />
+              <ProductPreview />
             </div>
           </div>
         </div>
@@ -137,10 +133,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="container-djondzo py-10">
-        <PublicStats stats={publicStats} />
-      </div>
 
       <Reveal>
         <section className="section-space bg-[var(--color-canvas)]">
