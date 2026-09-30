@@ -4,8 +4,6 @@ import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
-const fieldClass = "form-control";
-
 export function ContactForm() {
   const [sent, setSent] = useState(false);
 
@@ -27,73 +25,65 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-[32px] border border-[#DCE3ED] bg-white p-6 shadow-[0_18px_48px_rgba(15,23,43,0.08)] sm:p-8"
-    >
-      <div className="mb-7">
-        <p className="ui-h2">
-          Pedir demonstração
-        </p>
+    <form onSubmit={handleSubmit} className="surface p-6 sm:p-8">
+      <div className="mb-6 border-b border-[var(--color-border)] pb-5">
+        <h2 className="ui-h2">Pedir demonstração</h2>
         <p className="ui-body mt-2">
           Preencha os dados essenciais. O pedido será preparado no seu programa de e-mail.
         </p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A]">
+        <label className="form-label">
           Nome
           <input
             name="name"
             required
             autoComplete="name"
-            className={fieldClass}
+            className="form-control mt-2"
             placeholder="O seu nome"
           />
         </label>
-        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A]">
+        <label className="form-label">
           Escola
           <input
             name="school"
             required
             autoComplete="organization"
-            className={fieldClass}
+            className="form-control mt-2"
             placeholder="Nome da escola"
           />
         </label>
-        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A] sm:col-span-2">
+        <label className="form-label sm:col-span-2">
           Telefone / WhatsApp
           <input
             name="phone"
             type="tel"
             autoComplete="tel"
-            className={fieldClass}
+            className="form-control mt-2"
             placeholder="+258 84 000 0000"
           />
         </label>
-        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A] sm:col-span-2">
+        <label className="form-label sm:col-span-2">
           O que gostaria de organizar?
           <textarea
             name="message"
             rows={5}
-            className="form-control min-h-[128px] py-3"
+            className="form-control mt-2 min-h-[128px] py-3"
             placeholder="Conte-nos brevemente como a sua escola trabalha hoje."
           />
         </label>
       </div>
 
-      <button
-        type="submit"
-        className="btn-primary mt-6 w-full"
-      >
+      <button type="submit" className="btn-primary mt-6 w-full sm:w-auto">
         Preparar pedido por e-mail
         <ArrowRight size={16} />
       </button>
 
       <div aria-live="polite">
         {sent && (
-          <p className="mt-4 flex items-start gap-2 text-[0.8125rem] leading-5 text-[#71809A]">
-            <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#155DFC]" />
+          <p className="mt-4 flex items-start gap-2 text-base leading-6 text-[var(--color-text-secondary)]">
+            <CheckCircle2 size={16} className="mt-1 shrink-0 text-[var(--color-success)]" />
             O seu programa de e-mail será aberto com os dados preenchidos.
           </p>
         )}

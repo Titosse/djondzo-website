@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Calculator } from "lucide-react";
 import { siteConfig } from "@/config/site";
+
+const presets = [100, 300, 500, 1000];
 
 export function PriceCalculator() {
   const [students, setStudents] = useState(300);
@@ -12,49 +13,64 @@ export function PriceCalculator() {
   );
 
   return (
-    <div className="rounded-[30px] border border-[#DCE3ED] bg-white p-6 shadow-[0_16px_44px_rgba(15,23,43,0.07)] sm:p-8">
-      <div className="flex items-start gap-4">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC]">
-          <Calculator size={21} />
-        </span>
+    <section className="surface p-0" aria-labelledby="price-calculator-title">
+      <div className="price-test-heading">
+        <p className="context-label">Teste rápido</p>
+        <h3 id="price-calculator-title" className="ui-h2 mt-2">
+          Quantos alunos tem a sua escola?
+        </h3>
+        <p className="ui-body mt-3">
+          Escolha um exemplo ou introduza o número de alunos para ver a estimativa mensal.
+        </p>
+      </div>
+
+      <div className="price-preset-grid" aria-label="Exemplos de número de alunos">
+        {presets.map((preset) => (
+          <button
+            key={preset}
+            type="button"
+            onClick={() => setStudents(preset)}
+            aria-pressed={students === preset}
+            className="price-preset"
+          >
+            {preset.toLocaleString("pt-MZ")} alunos
+          </button>
+        ))}
+      </div>
+
+      <div className="price-calculator-grid">
         <div>
-          <p className="text-sm font-bold text-[#0F172B]">Calcule o valor mensal</p>
-          <p className="mt-1 text-base leading-7 text-[#52617A]">
-            Use o número de alunos cadastrados para obter uma estimativa simples.
-          </p>
+          <label className="form-label" htmlFor="students">
+            Número de alunos
+          </label>
+          <input
+            id="students"
+            type="number"
+            min="0"
+            step="1"
+            inputMode="numeric"
+            value={students}
+            onChange={(event) => setStudents(Number(event.target.value) || 0)}
+            className="form-control mt-2"
+          />
         </div>
+
+        <dl className="price-total-panel">
+          <dt className="text-base font-medium text-[var(--color-text-secondary)]">
+            Estimativa mensal
+          </dt>
+          <dd className="price-total-value">
+            {new Intl.NumberFormat("pt-MZ").format(total)} MT
+          </dd>
+          <dd className="mt-2 text-base leading-6 text-[var(--color-text-muted)]">
+            {students.toLocaleString("pt-MZ")} alunos × {siteConfig.pricePerStudent} MT
+          </dd>
+        </dl>
       </div>
 
-      <label
-        className="mt-7 block text-xs font-bold text-[#475569]"
-        htmlFor="students"
-      >
-        Número de alunos
-      </label>
-      <input
-        id="students"
-        type="number"
-        min="0"
-        step="1"
-        inputMode="numeric"
-        value={students}
-        onChange={(event) => setStudents(Number(event.target.value) || 0)}
-        className="mt-2 h-13 w-full rounded-2xl border border-[#DCE3ED] bg-[#F8FAFC] px-4 text-base font-bold text-[#0F172B] outline-none transition placeholder:text-[#94A3B8] focus:border-[#155DFC] focus:bg-white"
-      />
-
-      <div className="mt-6 rounded-[22px] border border-[#C7D2FE] bg-[#EEF3FF] p-5">
-        <p className="text-xs font-bold text-[#64748B]">Estimativa mensal</p>
-        <p className="mt-2 text-[clamp(1.75rem,3vw,2.25rem)] font-bold tracking-[-0.03em] text-[#0F172B]">
-          {new Intl.NumberFormat("pt-MZ").format(total)} MT
-        </p>
-        <p className="mt-2 text-xs font-semibold text-[#64748B]">
-          {students} alunos × {siteConfig.pricePerStudent} MT
-        </p>
-      </div>
-
-      <p className="mt-4 text-xs leading-5 text-[#8DA0BB]">
+      <p className="mt-5 text-center text-[0.9375rem] leading-6 text-[var(--color-text-muted)]">
         Estimativa com base no modelo actual. As condições finais são confirmadas pela equipa Djondzo.
       </p>
-    </div>
+    </section>
   );
 }

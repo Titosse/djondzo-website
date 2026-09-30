@@ -32,10 +32,7 @@ export function FAQ() {
     mainEntity: faqs.map((item) => ({
       "@type": "Question",
       name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
+      acceptedAnswer: { "@type": "Answer", text: item.a },
     })),
   };
 
@@ -45,21 +42,17 @@ export function FAQ() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="overflow-hidden rounded-[28px] border border-[#DCE3ED] bg-white shadow-[0_12px_36px_rgba(15,23,43,0.05)]">
+      <div className="border-y border-[var(--color-border)]">
         {faqs.map((item, index) => (
           <details
             key={item.q}
-            className={`group px-6 py-1 sm:px-8 ${
-              index !== 0 ? "border-t border-[#E6EBF2]" : ""
-            }`}
+            className={`group ${index !== 0 ? "border-t border-[var(--color-border)]" : ""}`}
           >
-            <summary className="flex min-h-[72px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-left text-base font-semibold text-[#0F172B]">
+            <summary className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-left text-base font-medium text-[var(--color-text)] [&::-webkit-details-marker]:hidden">
               {item.q}
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FB] text-lg font-normal text-[#64748B] transition group-open:rotate-45 group-open:bg-[#EEF3FF] group-open:text-[#155DFC]">
-                +
-              </span>
+              <span className="text-xl font-normal text-[var(--color-text-muted)] transition-transform group-open:rotate-45" aria-hidden="true">+</span>
             </summary>
-            <p className="max-w-3xl pb-6 pr-10 text-base leading-7 text-[#52617A]">
+            <p className="max-w-[72ch] pb-5 pr-10 text-base leading-7 text-[var(--color-text-secondary)]">
               {item.a}
             </p>
           </details>

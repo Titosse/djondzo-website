@@ -1,52 +1,103 @@
-# Djondzo — UI/UX System
+# Djondzo Website — Sistema de UI/UX
 
-This document is the public website design source of truth.
+Este documento define as regras visuais do website público do Djondzo. O objectivo é tornar a hierarquia mais óbvia, reduzir decoração gratuita e manter a interface específica para gestão escolar.
 
-## Design direction
+## 1. Ordem de decisão
 
-The website follows a calm, geometric SaaS language: generous white space, rounded surfaces, clear hierarchy, minimal decorative elements and one strong action colour. The visual identity comes from the supplied Djondzo login UI.
+1. tarefa do utilizador;
+2. conteúdo;
+3. prioridade;
+4. agrupamento;
+5. layout;
+6. hierarquia;
+7. tipografia;
+8. espaçamento;
+9. componentes;
+10. cor;
+11. detalhes visuais.
 
-## Brand palette
+A decoração nunca substitui a hierarquia.
 
-| Token | Value | Use |
-|---|---|---|
-| Primary | `#155DFC` | Main CTA, active states, links |
-| Primary hover | `#0F52E8` | Hover/pressed emphasis |
-| Secondary | `#757DF5` | Brand illustration/detail |
-| Pale | `#C7D2FE` | Logo, soft borders, decorative accents |
-| Soft | `#EEF3FF` | Icon tiles and selected surfaces |
-| Ink | `#0F172B` | Primary text and dark sections |
-| Muted | `#64748B` | Supporting copy |
-| Subtle | `#8DA0BB` | Metadata and tertiary labels |
-| Canvas | `#F8FAFC` | Page background |
-| Surface | `#FFFFFF` | Cards and raised regions |
-| Border | `#DCE3ED` | Dividers and control borders |
-| Product neutral | `#B5BDCB` | Reference from the login fields; use sparingly |
+## 2. Tipografia
 
-## UX rules
+- H1: `clamp(1.75rem, 1.48rem + 1.15vw, 2.5rem)`
+- H2: `clamp(1.25rem, 1.08rem + 0.75vw, 1.75rem)`
+- H3: `1.125rem–1.25rem`
+- Corpo: `1rem`
+- Secundário: `0.875rem`
+- Legenda: `0.8125rem`
 
-- Mobile first. Controls remain at least 44px tall where they are actionable.
-- Primary action is always blue; secondary action is white with a neutral border.
-- One dominant CTA per visual region.
-- Avoid decorative gradients. Use solid colour fields, borders, geometry and whitespace.
-- Use 28–34px radii for major cards, 18–22px for controls and smaller surfaces.
-- Every interactive control must have a visible keyboard focus state.
-- Respect `prefers-reduced-motion`.
-- Use semantic HTML and labelled form controls.
-- Avoid fake customer counts, ratings or claims. Demo values must be visually identified as illustrative.
-- Keep public marketing content separate from authenticated school data.
+Pesos usados: `400`, `500`, `600/700`.
 
-## Typography
+## 3. Cores
 
-Use the system UI sans-serif stack for speed and consistency. Headings are extra-bold with tight tracking; body text uses normal spacing and generous line-height.
+- Marca: `#155DFC`
+- Hover: `#0F52E8`
+- Azul claro: `#EEF3FF`
+- Texto principal: `#0F172B`
+- Texto secundário: `#52617A`
+- Texto auxiliar: `#64748B`
+- Fundo: `#F8FAFC`
+- Superfície: `#FFFFFF`
+- Borda: `#DCE3ED`
+- Sucesso: `#087A55`
+- Erro: `#C81E1E`
+- Aviso: `#A95900`
 
-## Visual hierarchy
+Cores de estado só são usadas quando existe significado funcional.
 
-1. Product promise
-2. Primary CTA
-3. Interface proof / product preview
-4. Modules and workflows
-5. Mobile and finance details
-6. Price and FAQ
-7. Educational resources
-8. Final CTA
+## 4. Espaçamento
+
+Escala: `4, 8, 12, 16, 24, 32, 48, 64px`.
+
+Elementos relacionados ficam mais próximos; grupos diferentes recebem mais espaço.
+
+## 5. Radius
+
+- pequeno: `8px`
+- controlo: `10px`
+- normal: `12px`
+- grande: `16px`
+
+Valores maiores não são usados por padrão.
+
+## 6. Cards e superfícies
+
+Cards só representam unidades independentes. Para conteúdo sequencial, preferir listas, divisores, colunas e agrupamento por proximidade.
+
+O website evita cards dentro de cards e remove sombras sempre que borda, contraste ou espaço forem suficientes.
+
+## 7. Botões
+
+- primário: uma acção dominante por contexto;
+- secundário: alternativa;
+- terciário: link/acção discreta;
+- área mínima: `44px`.
+
+## 8. Responsividade
+
+A grelha usa 4 colunas no mobile e 12 no desktop quando a composição exige colunas. No mobile, conteúdo é reorganizado por prioridade e não apenas comprimido.
+
+## 9. Acessibilidade
+
+- foco visível;
+- `aria-current` na navegação activa;
+- skip link;
+- contraste WCAG AA;
+- `prefers-reduced-motion`;
+- labels persistentes;
+- cor nunca é o único indicador de informação importante.
+
+## 10. Testes
+
+### Squint test
+
+Mesmo desfocada, a página deve mostrar a ordem: título → informação-chave → acção principal → conteúdo secundário.
+
+### Teste de identidade
+
+Sem logótipo, nome ou cor, a página deve continuar a parecer um website de gestão escolar através de alunos, matrículas, assiduidade, notas, mensalidades, professores, Mediateca e calendário.
+
+### Teste de necessidade
+
+Se remover um elemento não prejudica compreensão nem tarefa, ele deve ser removido ou simplificado.

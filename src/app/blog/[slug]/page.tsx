@@ -6,9 +6,7 @@ import { postMap, posts } from "@/data/posts";
 import { CTA } from "@/components/cta";
 import { siteConfig } from "@/config/site";
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
+type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return posts.map(({ slug }) => ({ slug }));
@@ -48,66 +46,41 @@ export default async function BlogPostPage({ params }: PageProps) {
     dateModified: post.publishedAt,
     inLanguage: siteConfig.language,
     mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.shortName,
-      url: siteConfig.url,
-    },
+    publisher: { "@type": "Organization", name: siteConfig.shortName, url: siteConfig.url },
   };
 
   return (
     <main id="main-content">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <article className="section-space bg-white">
         <div className="container-djondzo">
-          <div className="mx-auto max-w-3xl">
-            <Link
-              href="/blog"
-              className="inline-flex min-h-10 items-center gap-2 rounded-xl text-xs font-bold text-[#155DFC]"
-            >
+          <div className="mx-auto max-w-[72ch]">
+            <Link href="/blog" className="btn-tertiary -ml-2">
               <ArrowLeft size={14} />
               Voltar aos recursos
             </Link>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3 text-xs font-bold text-[#8DA0BB]">
-              <span className="rounded-full bg-[#EEF3FF] px-3 py-1.5 text-[#155DFC]">
-                {post.category}
-              </span>
-              <span>•</span>
+            <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1 text-base text-[var(--color-text-muted)]">
+              <span className="font-medium text-[var(--color-action)]">{post.category}</span>
+              <span aria-hidden="true">·</span>
               <time dateTime={post.publishedAt}>
-                {new Intl.DateTimeFormat("pt-MZ", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                  timeZone: "UTC",
-                }).format(new Date(`${post.publishedAt}T00:00:00Z`))}
+                {new Intl.DateTimeFormat("pt-MZ", { day: "2-digit", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${post.publishedAt}T00:00:00Z`))}
               </time>
-              <span>•</span>
+              <span aria-hidden="true">·</span>
               <span>{post.readingTime}</span>
             </div>
 
-            <h1 className="ui-h1 mt-5">
-              {post.title}
-            </h1>
+            <h1 className="ui-h1 mt-4">{post.title}</h1>
             <p className="ui-body mt-5">{post.description}</p>
 
-            <div className="article-copy mt-12 border-t border-[#E6EBF2] pt-2">
+            <div className="article-copy mt-10 border-t border-[var(--color-border)] pt-1">
               {post.sections.map((section) => (
                 <section key={section.heading}>
                   <h2>{section.heading}</h2>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+                  {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   {section.bullets && (
-                    <ul>
-                      {section.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
+                    <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
                   )}
                 </section>
               ))}

@@ -1,9 +1,24 @@
 import type { Metadata, Viewport } from "next";
+import { Sora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
 import { siteConfig } from "@/config/site";
+
+const headingFont = Sora({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const bodyFont = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -26,9 +41,7 @@ export const metadata: Metadata = {
     "assiduidade escolar",
     "Djondzo Escolar",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
@@ -64,7 +77,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang={siteConfig.language}>
+    <html lang={siteConfig.language} className={`${headingFont.variable} ${bodyFont.variable}`}>
       <body>
         <a href="#main-content" className="skip-link">
           Saltar para o conteúdo

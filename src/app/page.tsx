@@ -1,25 +1,44 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  BadgeDollarSign,
-  CalendarCheck2,
   Check,
   GraduationCap,
   LibraryBig,
   MessageCircleMore,
-  ShieldCheck,
-  Smartphone,
+  CalendarCheck2,
+  BadgeDollarSign,
   UsersRound,
 } from "lucide-react";
 import { ProductPreview } from "@/components/product-preview";
+import { PublicStats } from "@/components/public-stats";
 import { SectionHeading } from "@/components/section-heading";
 import { PriceCalculator } from "@/components/price-calculator";
+import { MobileAppShowcase } from "@/components/mobile-app-showcase";
 import { FAQ } from "@/components/faq";
 import { CTA } from "@/components/cta";
+import { Reveal } from "@/components/reveal";
+import { SchoolFlow } from "@/components/school-flow";
+import { ProductTour } from "@/components/product-tour";
+import {
+  FinancePreview,
+  MediatecaPreview,
+  PautasPreview,
+} from "@/components/djondzo-previews";
 import { posts } from "@/data/posts";
 import { siteConfig } from "@/config/site";
+import { getDjondzoPublicStats } from "@/lib/public-stats";
 
-const modules = [
+const profiles = [
+  "Administração",
+  "Pedagógico",
+  "Secretaria",
+  "Contabilidade",
+  "Professor",
+  "Bibliotecário",
+  "Aluno",
+];
+
+const capabilities = [
   {
     icon: UsersRound,
     title: "Alunos e matrículas",
@@ -47,412 +66,297 @@ const modules = [
   {
     icon: LibraryBig,
     title: "Mediateca",
-    text: "Catálogo, exemplares, empréstimos e reservas.",
+    text: "Catálogo, exemplares, empréstimos, reservas e localizações.",
     href: "/mediateca",
   },
   {
     icon: MessageCircleMore,
     title: "Comunicação",
-    text: "Notificações ligadas aos eventos académicos e financeiros.",
+    text: "Avisos e notificações ligados aos eventos reais do sistema.",
     href: "/whatsapp",
   },
 ];
 
-const profiles = [
-  "Administração",
-  "Pedagógico",
-  "Secretaria",
-  "Contabilidade",
-  "Professor",
-  "Bibliotecário",
-  "Aluno",
-];
+export default async function HomePage() {
+  const publicStats = await getDjondzoPublicStats();
 
-export default function HomePage() {
   return (
     <main id="main-content">
-      <section className="relative overflow-hidden border-b border-[#DCE3ED] bg-[#F8FAFC]">
-        <div className="absolute inset-0 soft-grid opacity-60" aria-hidden="true" />
-        <div
-          className="absolute left-[4%] top-24 h-28 w-28 rounded-[32px] bg-[#EEF3FF] lg:h-36 lg:w-36"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-14 right-[6%] h-24 w-24 rounded-full border-[18px] border-[#C7D2FE]/60"
-          aria-hidden="true"
-        />
-
-        <div className="container-djondzo relative grid grid-cols-4 items-center gap-8 py-16 lg:min-h-[720px] lg:grid-cols-12 lg:gap-12 lg:py-20">
-          <div className="col-span-4 max-w-2xl lg:col-span-5">
-            <div className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#C7D2FE] bg-white px-4 text-xs font-bold text-[#475569] shadow-[0_6px_18px_rgba(15,23,43,0.04)]">
-              <span className="h-2 w-2 rounded-full bg-[#155DFC]" />
-              Gestão escolar para Moçambique
-            </div>
-
-            <h1 className="ui-h1 mt-7 max-w-[15ch]">
-              A escola inteira, ligada no mesmo sistema.
+      <section className="home-hero border-b border-[var(--color-border)] bg-white">
+        <div className="container-djondzo-wide py-14 text-center lg:py-20">
+          <div className="hero-copy mx-auto max-w-[760px]">
+            <p className="context-label">Djondzo Escolar · Gestão escolar em Moçambique</p>
+            <h1 className="ui-h1 mt-4">
+              A escola inteira,
+              <span className="hero-accent-line"> ligada no mesmo sistema.</span>
             </h1>
-
-            <p className="ui-body mt-6 max-w-[66ch]">
-              O Djondzo reúne gestão académica, secretaria, contabilidade,
-              professores, alunos e Mediateca para reduzir trabalho repetido e
-              manter a informação escolar organizada.
+            <p className="ui-body mx-auto mt-6 max-w-[64ch]">
+              O Djondzo liga secretaria, gestão académica, financeiro, professores,
+              Mediateca e aluno numa única operação escolar — sem repetir os mesmos
+              dados em várias folhas e aplicações.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contactos" className="btn-primary">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link href="/contactos" className="btn-primary link-arrow">
                 Pedir demonstração
-                <ArrowRight size={17} />
+                <ArrowRight size={17} aria-hidden="true" />
               </Link>
               <Link href="/funcionalidades" className="btn-secondary">
-                Explorar funcionalidades
+                Explorar o produto
               </Link>
             </div>
 
-            <div className="mt-9 grid gap-3 sm:grid-cols-2">
-              {[
-                "Perfis separados por função",
-                "Web e aplicação móvel",
-                "Académico e financeiro ligados",
-                "Dados isolados por escola",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-2.5 text-base font-normal text-[#52617A]">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#EEF3FF] text-[#155DFC]">
-                    <Check size={12} strokeWidth={3} />
-                  </span>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="col-span-4 lg:col-span-7">
-            <ProductPreview />
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-[#E6EBF2] bg-white py-7">
-        <div className="container-djondzo">
-          <p className="text-center text-xs font-bold uppercase tracking-[0.15em] text-[#8DA0BB]">
-            Um espaço de trabalho para cada perfil
-          </p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {profiles.map((profile) => (
-              <span key={profile} className="text-sm font-semibold text-[#52617A]">
-                {profile}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-white">
-        <div className="container-djondzo">
-          <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-end">
-            <div className="col-span-4 lg:col-span-5">
-              <SectionHeading
-              eyebrow="Porquê o Djondzo"
-              title="Menos ficheiros soltos. Menos informação repetida."
-              description="O valor do sistema aparece quando uma acção feita por um perfil passa a alimentar os restantes fluxos que realmente precisam dela."
-              />
-            </div>
-            <div className="col-span-4 grid gap-3 sm:grid-cols-3 lg:col-span-7">
-              {[
-                ["01", "Registar uma vez", "O aluno não precisa ser recriado em cada módulo."],
-                ["02", "Separar permissões", "Cada função trabalha apenas com o que lhe compete."],
-                ["03", "Acompanhar melhor", "Relatórios usam a mesma base operacional."],
-              ].map(([number, title, text]) => (
-                <div key={number} className="rounded-[24px] border border-[#DCE3ED] bg-[#F8FAFC] p-5">
-                  <span className="ui-caption text-[#155DFC]">{number}</span>
-                  <h3 className="mt-4 text-base font-semibold text-[#0F172B]">{title}</h3>
-                  <p className="mt-2 text-[0.8125rem] leading-5 text-[#71809A]">{text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-[#F8FAFC]">
-        <div className="container-djondzo">
-          <SectionHeading
-            eyebrow="Funcionalidades"
-            title="As principais rotinas escolares ligadas entre si."
-            description="Cada módulo resolve uma parte do trabalho, mas partilha a mesma base de alunos, turmas, utilizadores e operações."
-          />
-
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {modules.map(({ icon: Icon, title, text, href }) => (
-              <Link
-                key={title}
-                href={href}
-                className="group min-h-64 rounded-[28px] border border-[#DCE3ED] bg-white p-7 shadow-[0_8px_24px_rgba(15,23,43,0.035)] transition hover:-translate-y-1 hover:border-[#C7D2FE] hover:shadow-[0_20px_46px_rgba(15,23,43,0.08)]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC] transition group-hover:bg-[#155DFC] group-hover:text-white">
-                  <Icon size={21} />
-                </div>
-                <h3 className="mt-7 text-xl font-bold tracking-[-0.025em] text-[#0F172B]">
-                  {title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-[#52617A]">{text}</p>
-                <div className="mt-6 flex items-center gap-2 ui-caption text-[#155DFC]">
-                  Conhecer módulo
-                  <ArrowRight size={14} className="transition group-hover:translate-x-1" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-[#0F172B] text-white">
-        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
-          <div className="col-span-4 lg:col-span-5">
-            <SectionHeading
-              eyebrow="Uma base comum"
-              title="Cada equipa vê o que precisa. Os dados continuam ligados."
-              description="O Djondzo não coloca toda a gente no mesmo painel. Cada perfil tem o seu espaço, mas trabalha sobre a mesma realidade da escola."
-              light
-            />
-            <div className="mt-8 flex flex-wrap gap-2">
-              {profiles.map((profile) => (
-                <span
-                  key={profile}
-                  className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-xs font-bold text-white/75"
-                >
-                  {profile}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="col-span-4 rounded-[24px] border border-white/10 bg-white/[0.04] p-4 sm:p-6 lg:col-span-7">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                {
-                  title: "Secretaria",
-                  text: "Matrículas, alunos, turmas, renovação e processos administrativos.",
-                },
-                {
-                  title: "Pedagógico",
-                  text: "Notas, pautas, assiduidade, transições e acompanhamento académico.",
-                },
-                {
-                  title: "Contabilidade",
-                  text: "Recebimentos, despesas, salários, caixa e controlo financeiro.",
-                },
-                {
-                  title: "Professor",
-                  text: "Turmas, disciplinas, notas, presenças, tarefas e conteúdos.",
-                },
-              ].map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`rounded-[22px] p-5 ${
-                    index === 0 ? "bg-[#155DFC] text-white" : "bg-white text-[#0F172B]"
-                  }`}
-                >
-                  <p className="text-sm font-bold">{item.title}</p>
-                  <p
-                    className={`mt-2 text-xs leading-5 ${
-                      index === 0 ? "text-white/75" : "text-[#64748B]"
-                    }`}
-                  >
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-white">
-        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
-          <div className="col-span-4 rounded-[24px] border border-[#DCE3ED] bg-[#F8FAFC] p-5 shadow-[0_18px_48px_rgba(15,23,43,0.07)] sm:p-7 lg:col-span-7">
-            <div className="rounded-[26px] border border-[#E3E8F0] bg-white p-5 sm:p-6">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8DA0BB]">
-                    Financeiro
-                  </p>
-                  <p className="mt-1 text-base font-bold text-[#0F172B]">
-                    Recebimentos do mês
-                  </p>
-                </div>
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC]">
-                  <BadgeDollarSign size={20} />
-                </span>
-              </div>
-
-              <div className="mt-6 grid grid-cols-3 gap-2">
-                {[
-                  ["Previsto", "—"],
-                  ["Recebido", "—"],
-                  ["Pendente", "—"],
-                ].map(([label, value], index) => (
-                  <div
-                    key={label}
-                    className={`rounded-2xl p-3 ${
-                      index === 1 ? "bg-[#EEF3FF]" : "bg-[#F8FAFC]"
-                    }`}
-                  >
-                    <p className="text-xs font-semibold text-[#8DA0BB]">{label}</p>
-                    <p className="mt-1 text-sm font-bold text-[#0F172B]">{value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-5 space-y-2.5">
-                {[76, 58, 86, 66].map((width, index) => (
-                  <div key={index} className="rounded-xl border border-[#E6EBF2] p-3">
-                    <div className="h-2 rounded-full bg-[#DCE3ED]" style={{ width: `${width}%` }} />
-                    <div className="mt-2 h-1.5 w-20 rounded-full bg-[#EEF2F6]" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="col-span-4 lg:col-span-5">
-            <SectionHeading
-            eyebrow="Financeiro"
-            title="Cobrança e recebimento sem perder o contexto do aluno."
-            description="Mensalidades, pagamentos, recibos, despesas e salários podem ser acompanhados dentro da mesma operação escolar."
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-[#F8FAFC]">
-        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
-          <div className="col-span-4 lg:col-span-5">
-            <SectionHeading
-              eyebrow="Djondzo Mobile"
-              title="A informação escolar também acompanha o aluno."
-              description="O aplicativo organiza as consultas frequentes em início, calendário, tarefas, notas, financeiro, biblioteca e perfil."
-            />
-            <div className="mt-8 flex flex-wrap gap-2">
-              {[
-                "Notas",
-                "Horários",
-                "Tarefas",
-                "Presenças",
-                "Financeiro",
-                "Biblioteca",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-[#DCE3ED] bg-white px-4 py-2 text-xs font-bold text-[#64748B]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-            <Link
-              href="/app-mobile"
-              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-bold text-[#155DFC]"
-            >
-              Conhecer aplicação móvel
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-
-          <div className="relative col-span-4 mx-auto w-full max-w-[600px] rounded-[24px] border border-[#C7D2FE] bg-[#EEF3FF] p-8 sm:p-12 lg:col-span-7">
-            <div className="absolute left-7 top-7 h-14 w-14 rounded-2xl bg-white/70" aria-hidden="true" />
-            <div className="mx-auto max-w-[274px] rounded-[40px] border-[9px] border-[#0F172B] bg-white p-3 shadow-[0_28px_70px_rgba(15,23,43,0.20)]">
-              <div className="rounded-[28px] bg-[#155DFC] p-5 text-white">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs text-white/65">Bom dia</p>
-                    <p className="mt-1 text-base font-bold">Aluno</p>
-                  </div>
-                  <Smartphone size={18} className="text-[#C7D2FE]" />
-                </div>
-                <div className="mt-6 grid grid-cols-2 gap-2">
-                  {[
-                    ["Notas", "16.4"],
-                    ["Presença", "96%"],
-                    ["Tarefas", "3"],
-                    ["Disciplinas", "11"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="rounded-2xl bg-white/[0.11] p-3">
-                      <p className="text-xs text-white/65">{label}</p>
-                      <p className="mt-1 text-sm font-bold">{value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-3 space-y-2">
-                {["Aulas do dia", "Próximas tarefas", "Biblioteca"].map((item) => (
-                  <div
-                    key={item}
-                    className="flex min-h-11 items-center justify-between rounded-2xl bg-[#F4F7FB] px-4 text-xs font-bold text-[#475569]"
-                  >
-                    {item}
-                    <ArrowRight size={11} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-white">
-        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
-          <div className="col-span-4 lg:col-span-5">
-            <SectionHeading
-              eyebrow="Preço"
-              title={`${siteConfig.pricePerStudent} MT por aluno cadastrado por mês.`}
-              description="Um modelo simples baseado no número de alunos cadastrados no sistema. Use a calculadora para fazer uma estimativa."
-            />
-            <div className="mt-7 space-y-3">
-              {[
-                "Acesso dos perfis da escola",
-                "Gestão académica e administrativa",
-                "Financeiro e Mediateca",
-                "Aplicação móvel do aluno",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-base font-normal text-[#52617A]">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#EEF3FF] text-[#155DFC]">
-                    <Check size={13} />
-                  </span>
-                  {item}
-                </div>
-              ))}
-            </div>
-            <Link
-              href="/precos"
-              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-bold text-[#155DFC]"
-            >
-              Ver condições
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-          <div className="col-span-4 lg:col-span-7">
-            <PriceCalculator />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space bg-[#F8FAFC]">
-        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="col-span-4 lg:col-span-5">
-            <SectionHeading
-              eyebrow="Perguntas frequentes"
-              title="O essencial antes de pedir uma demonstração."
-              description="Respostas curtas sobre preço, perfis, aplicativo, Mediateca e organização dos dados."
-            />
-            <div className="mt-7 flex items-start gap-3 rounded-[22px] border border-[#C7D2FE] bg-[#EEF3FF] p-4">
-              <ShieldCheck className="mt-0.5 shrink-0 text-[#155DFC]" size={19} />
-              <p className="text-xs leading-5 text-[#475569]">
-                O site público apresenta apenas informação comercial. Os dados operacionais continuam dentro do sistema autenticado.
+            <div className="mx-auto mt-8 max-w-[680px] border-t border-[var(--color-border)] pt-5">
+              <p className="text-sm font-medium text-[var(--color-text)]">
+                Administração · Secretaria · Pedagógico · Contabilidade · Professor · Mediateca · Aluno
               </p>
             </div>
           </div>
-          <div className="col-span-4 lg:col-span-7">
+
+          <div className="hero-preview mx-auto mt-12 max-w-[980px] lg:mt-14">
+            <div className="home-product-stage home-product-stage-centered">
+              <ProductPreview stats={publicStats} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-context-strip bg-white">
+        <div className="container-djondzo-reading py-7 text-center">
+          <p className="text-sm font-semibold text-[var(--color-text)]">
+            O mesmo dado percorre a escola
+          </p>
+          <div className="mt-3 flex flex-wrap justify-center gap-x-7 gap-y-2 text-sm text-[var(--color-text-secondary)]">
+            <span>Matrícula</span>
+            <span>Turma</span>
+            <span>Notas</span>
+            <span>Assiduidade</span>
+            <span>Mensalidades</span>
+            <span>Mediateca</span>
+            <span>Portal do aluno</span>
+          </div>
+        </div>
+      </section>
+
+      <div className="container-djondzo py-10">
+        <PublicStats stats={publicStats} />
+      </div>
+
+      <Reveal>
+        <section className="section-space bg-[var(--color-canvas)]">
+          <div className="container-djondzo">
+            <SectionHeading
+              centered
+              title="Uma base escolar, vários fluxos ligados."
+              description="O aluno não é recriado quando muda de área. A matrícula liga a turma; a turma liga o académico; o académico e o financeiro continuam ligados ao mesmo registo."
+            />
+            <div className="mx-auto mt-10 max-w-[920px]">
+              <SchoolFlow />
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <section className="section-space border-y border-[var(--color-border)] bg-white">
+        <div className="container-djondzo">
+          <div className="mx-auto max-w-[760px] text-center">
+            <p className="context-label">Fluxo do produto</p>
+            <h2 className="ui-h2 mt-3">Acompanhe a operação da escola, área por área.</h2>
+            <p className="ui-body mx-auto mt-4 max-w-[64ch]">
+              Escolha uma área e veja como o Djondzo organiza o trabalho real da escola,
+              usando a estrutura actual do produto com dados neutros de demonstração.
+            </p>
+          </div>
+
+          <Reveal className="mt-10" delay={70}>
+            <div className="home-tour-stage">
+              <ProductTour />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <Reveal>
+        <section className="section-space bg-white">
+          <div className="container-djondzo">
+            <div className="home-centered-copy">
+              <p className="context-label">Académico</p>
+              <h2 className="ui-h2 mt-3">Das avaliações à pauta, sem refazer informação.</h2>
+              <p className="ui-body mx-auto mt-5">
+                Turmas, disciplinas, notas e pautas trabalham sobre os mesmos vínculos
+                académicos. O pedagógico e o professor consultam a mesma realidade da escola.
+              </p>
+              <ul className="home-check-list home-check-list-centered mt-6">
+                {[
+                  "Cadernetas e pautas académicas",
+                  "Filtros por turma, período e disciplina",
+                  "Notas, médias e documentos ligados",
+                  "Exportação dos resultados disponíveis",
+                ].map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/gestao-academica" className="btn-tertiary link-arrow mt-4">
+                Conhecer gestão académica
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="home-showcase-center mt-10">
+              <PautasPreview />
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section className="section-space home-blue-stage">
+          <div className="container-djondzo">
+            <div className="home-centered-copy">
+              <p className="context-label">Financeiro</p>
+              <h2 className="ui-h2 mt-3">O pagamento continua ligado ao aluno.</h2>
+              <p className="ui-body mx-auto mt-5">
+                Mensalidades, recebimentos, dívidas, despesas e salários deixam de viver
+                numa folha paralela. A escola acompanha o movimento financeiro dentro do
+                mesmo sistema em que gere os alunos.
+              </p>
+              <Link href="/gestao-financeira" className="btn-tertiary link-arrow mt-5">
+                Conhecer Tesouraria
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="home-showcase-center mt-10">
+              <FinancePreview />
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section className="section-space home-dark-stage text-white">
+          <div className="container-djondzo">
+            <div className="home-centered-copy">
+              <p className="text-sm font-semibold text-[var(--color-brand-pale)]">Mediateca escolar</p>
+              <h2 className="ui-h2 mt-3 !text-white">Livros físicos também fazem parte do ecossistema.</h2>
+              <p className="mx-auto mt-5 max-w-[64ch] text-base leading-[1.6] text-[var(--color-on-dark)]">
+                Catálogo, exemplares, localização, empréstimos e reservas ficam ligados aos
+                leitores que já existem no Djondzo. Aluno e professor não precisam de outra conta.
+              </p>
+              <Link href="/mediateca" className="home-dark-link mt-5 inline-flex items-center gap-2 text-sm font-semibold">
+                Conhecer Mediateca
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="home-showcase-center mt-10">
+              <MediatecaPreview />
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section className="section-space bg-white">
+          <div className="container-djondzo">
+            <div className="home-centered-copy">
+              <p className="context-label">Aluno e mobile</p>
+              <h2 className="ui-h2 mt-3">O essencial chega ao aluno sem passar pela secretaria.</h2>
+              <p className="ui-body mx-auto mt-5">
+                Horário, tarefas, notas, presenças, financeiro, biblioteca e perfil aparecem
+                num espaço próprio. A experiência móvel prioriza o que o aluno precisa consultar no dia a dia.
+              </p>
+              <Link href="/app-mobile" className="btn-tertiary link-arrow mt-5">
+                Conhecer aplicação móvel
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="mx-auto mt-10 max-w-[900px]">
+              <MobileAppShowcase />
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <section className="section-space border-y border-[var(--color-border)] bg-[var(--color-canvas)]">
+        <div className="container-djondzo">
+          <SectionHeading
+            centered
+            title="As áreas que sustentam a operação escolar."
+            description="Cada módulo tem uma função própria, mas todos trabalham sobre a mesma estrutura da escola."
+          />
+          <div className="mx-auto mt-10 max-w-[900px]">
+            <div className="capability-index">
+              {capabilities.map(({ icon: Icon, title, text, href }) => (
+                <Link key={title} href={href} className="capability-row group">
+                  <Icon size={18} aria-hidden="true" />
+                  <div>
+                    <h3 className="ui-h3">{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-space bg-white">
+        <div className="container-djondzo">
+          <div className="price-spotlight">
+            <div className="price-spotlight-top">
+              <p className="context-label">Preço simples</p>
+
+              <div className="price-display" aria-label={`${siteConfig.pricePerStudent} meticais`}>
+                <span className="price-display-value">{siteConfig.pricePerStudent}</span>
+                <span className="price-display-currency">MT</span>
+              </div>
+
+              <p className="price-display-unit">por aluno cadastrado / mês</p>
+
+              <p className="ui-body price-spotlight-description">
+                O valor mensal acompanha o número de alunos cadastrados no Djondzo.
+                Faça um teste abaixo para estimar a cobrança da sua escola.
+              </p>
+
+              <ul className="home-check-list home-check-list-centered price-spotlight-includes">
+                {[
+                  "Perfis e permissões da escola",
+                  "Gestão académica e administrativa",
+                  "Financeiro e Mediateca",
+                  "Aplicação móvel do aluno",
+                ].map((item) => (
+                  <li key={item}>
+                    <Check size={16} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <Link href="/precos" className="btn-tertiary link-arrow mt-5">
+                Ver condições
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="price-calculator-feature">
+              <PriceCalculator />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-space border-y border-[var(--color-border)] bg-[var(--color-canvas)]">
+        <div className="container-djondzo">
+          <SectionHeading
+            centered
+            title="Antes da demonstração."
+            description="Respostas rápidas sobre preço, perfis, aplicativo, Mediateca e organização dos dados."
+          />
+          <div className="mx-auto mt-10 max-w-[820px]">
             <FAQ />
           </div>
         </div>
@@ -460,42 +364,40 @@ export default function HomePage() {
 
       <section className="section-space bg-white">
         <div className="container-djondzo">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div className="text-center">
             <SectionHeading
-              eyebrow="Recursos"
-              title="Conteúdo prático sobre gestão escolar."
-              description="Artigos que explicam processos académicos, administrativos e financeiros de forma directa."
+              centered
+              title="Conteúdo para quem gere escolas."
+              description="Artigos sobre processos académicos, administrativos e financeiros sem linguagem genérica."
             />
-            <Link
-              href="/blog"
-              className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl text-sm font-bold text-[#155DFC]"
-            >
+            <Link href="/blog" className="btn-tertiary link-arrow mt-4">
               Ver todos
-              <ArrowRight size={15} />
+              <ArrowRight size={15} aria-hidden="true" />
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <div className="mx-auto mt-8 max-w-[920px] border-t border-[var(--color-border)]">
             {posts.slice(0, 3).map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group rounded-[26px] border border-[#DCE3ED] bg-[#F8FAFC] p-6 transition hover:-translate-y-1 hover:border-[#C7D2FE] hover:bg-white hover:shadow-[0_16px_45px_rgba(15,23,43,0.07)]"
+                className="group grid gap-3 border-b border-[var(--color-border)] py-5 transition-colors duration-150 hover:bg-[var(--color-canvas)] sm:grid-cols-[140px_1fr_auto] sm:items-start sm:px-3"
               >
-                <div className="flex items-center justify-between gap-3">
-                  <p className="ui-caption text-[#155DFC]">{post.category}</p>
-                  <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-[#8DA0BB]">
-                    {post.readingTime}
-                  </span>
+                <div>
+                  <p className="text-sm font-medium text-[var(--color-action)]">{post.category}</p>
+                  <p className="mt-1 text-xs text-[var(--color-text-muted)]">{post.readingTime}</p>
                 </div>
-                <h3 className="mt-5 text-xl font-bold tracking-[-0.025em] text-[#0F172B]">
-                  {post.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-[#52617A]">{post.description}</p>
-                <div className="mt-6 flex items-center gap-2 ui-caption text-[#155DFC]">
-                  Ler artigo
-                  <ArrowRight size={14} className="transition group-hover:translate-x-1" />
+                <div>
+                  <h3 className="ui-h3">{post.title}</h3>
+                  <p className="mt-2 max-w-[64ch] text-base leading-7 text-[var(--color-text-secondary)]">
+                    {post.description}
+                  </p>
                 </div>
+                <ArrowRight
+                  size={17}
+                  className="mt-1 text-[var(--color-text-muted)] transition-transform duration-150 ease-out group-hover:translate-x-0.5 group-hover:text-[var(--color-action)]"
+                  aria-hidden="true"
+                />
               </Link>
             ))}
           </div>

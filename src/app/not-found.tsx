@@ -3,18 +3,14 @@ import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <main id="main-content" className="section-space bg-[#F8FAFC]">
-      <div className="container-djondzo text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-[22px] bg-[#EEF3FF] text-xl font-bold text-[#155DFC]">
-          404
-        </div>
-        <h1 className="ui-h1 mt-6">
-          Página não encontrada.
-        </h1>
-        <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[#64748B]">
+    <main id="main-content" className="section-space bg-white">
+      <div className="container-djondzo max-w-2xl">
+        <p className="context-label">Erro 404</p>
+        <h1 className="ui-h1 mt-3">Página não encontrada.</h1>
+        <p className="ui-body mt-5">
           A página que procura não existe ou mudou de endereço.
         </p>
-        <Link href="/" className="btn-primary mt-8">
+        <Link href="/" className="btn-primary mt-7">
           <ArrowLeft size={16} />
           Voltar ao início
         </Link>

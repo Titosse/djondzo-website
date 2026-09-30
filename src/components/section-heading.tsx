@@ -16,15 +16,13 @@ export function SectionHeading({
   return (
     <div className={centered ? "mx-auto max-w-[72ch] text-center" : "max-w-[72ch]"}>
       {eyebrow && (
-        <p className={`eyebrow ${light ? "!text-[#C7D2FE]" : ""}`}>
-          {eyebrow}
-        </p>
+        <p className={`context-label ${light ? "!text-[var(--color-brand-pale)]" : ""}`}>{eyebrow}</p>
       )}
-      <h2 className={`ui-h2 mt-4 ${light ? "!text-white" : ""}`}>
+      <h2 className={`ui-h2 ${eyebrow ? "mt-2" : ""} ${light ? "!text-white" : ""}`}>
         {title}
       </h2>
       {description && (
-        <p className={`ui-body mt-4 ${light ? "!text-white/72" : ""}`}>
+        <p className={`ui-body mt-4 ${light ? "!text-[var(--color-on-dark)]" : ""}`}>
           {description}
         </p>
       )}

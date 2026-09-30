@@ -12,83 +12,72 @@ export const metadata: Metadata = {
 };
 
 export default function PrecosPage() {
+  const inclusions = [
+    "Gestão académica",
+    "Secretaria e matrículas",
+    "Gestão financeira",
+    "Assiduidade",
+    "Mediateca",
+    "Aplicação móvel do aluno",
+    "Perfis e permissões",
+  ];
+
   return (
     <main id="main-content">
-      <section className="section-space border-b border-[#DCE3ED] bg-[#F8FAFC]">
+      <section className="section-space bg-white">
         <div className="container-djondzo">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Preço</p>
-            <h1 className="ui-h1 mt-4">
-              Um preço simples por aluno.
-            </h1>
-            <p className="ui-body mt-5">
-              O modelo base actual é calculado pelo número de alunos cadastrados no sistema.
+          <div className="pricing-page-intro">
+            <p className="context-label">Preço Djondzo</p>
+            <h1 className="ui-h1 mt-3">Um preço simples por aluno.</h1>
+            <p className="ui-body">
+              O valor mensal é calculado pelo número de alunos cadastrados no sistema.
+              Teste abaixo quantos alunos tem a sua escola.
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2">
-            <div className="relative overflow-hidden rounded-[32px] bg-[#0F172B] p-7 text-white sm:p-9">
-              <div className="absolute right-7 top-7 h-20 w-20 rounded-[24px] border border-[#757DF5]/35" />
-              <div className="relative">
-                <p className="text-sm font-bold text-[#C7D2FE]">Djondzo Escolar</p>
-                <div className="mt-5 flex flex-wrap items-end gap-2">
-                  <span className="text-5xl font-bold tracking-[-0.055em]">
-                    {siteConfig.pricePerStudent} MT
-                  </span>
-                  <span className="pb-1 text-sm font-semibold text-white/50">
-                    / aluno / mês
-                  </span>
-                </div>
+          <div className="pricing-page-grid">
+            <section className="pricing-plan-primary" aria-labelledby="price-plan-title">
+              <p className="pricing-kicker">Djondzo Escolar</p>
+              <h2 id="price-plan-title" className="pricing-main-value">
+                {siteConfig.pricePerStudent} MT
+              </h2>
+              <p className="pricing-unit">por aluno cadastrado / mês</p>
 
-                <div className="mt-8 space-y-4">
-                  {[
-                    "Gestão académica",
-                    "Secretaria e matrículas",
-                    "Gestão financeira",
-                    "Assiduidade",
-                    "Mediateca",
-                    "Aplicação móvel do aluno",
-                    "Perfis e permissões",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-3 text-sm text-white/75">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#155DFC] text-white">
-                        <Check size={13} />
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
+              <ul className="pricing-plan-list">
+                {inclusions.map((item) => (
+                  <li key={item}>
+                    <Check size={17} className="shrink-0 text-[#C7D2FE]" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-                <Link
-                  href="/contactos"
-                  className="mt-9 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[18px] bg-[#155DFC] px-5 text-sm font-bold text-white transition hover:bg-[#0F52E8]"
-                >
-                  Pedir demonstração
-                  <ArrowRight size={16} />
-                </Link>
-                <p className="mt-4 text-xs leading-5 text-white/45">
-                  As condições comerciais finais devem ser confirmadas com a equipa Djondzo.
-                </p>
-              </div>
+              <Link href="/contactos" className="btn-primary mt-7 w-full sm:w-auto">
+                Pedir demonstração
+                <ArrowRight size={17} aria-hidden="true" />
+              </Link>
+
+              <p className="pricing-plan-note">
+                As condições comerciais finais são confirmadas com a equipa Djondzo.
+              </p>
+            </section>
+
+            <div className="pricing-calculator-pane">
+              <PriceCalculator />
             </div>
-
-            <PriceCalculator />
           </div>
         </div>
       </section>
 
-      <section className="section-space bg-white">
-        <div className="container-djondzo grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
-          <div>
-            <p className="eyebrow">FAQ</p>
-            <h2 className="ui-h2 mt-4">
-              Dúvidas sobre o modelo.
-            </h2>
-            <p className="mt-4 text-base leading-7 text-[#52617A]">
-              A calculadora serve como estimativa. O valor contratual é confirmado no processo comercial.
-            </p>
+      <section className="section-space border-t border-[var(--color-border)] bg-[var(--color-canvas)]">
+        <div className="container-djondzo grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <p className="context-label">Perguntas frequentes</p>
+            <h2 className="ui-h2 mt-2">Dúvidas sobre o modelo.</h2>
           </div>
-          <FAQ />
+          <div className="lg:col-span-7">
+            <FAQ />
+          </div>
         </div>
       </section>
     </main>

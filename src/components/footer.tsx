@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { Brand } from "@/components/brand";
 import { solutions } from "@/data/solutions";
 import { siteConfig } from "@/config/site";
@@ -9,22 +8,20 @@ export function Footer() {
   const topSolutions = solutions.slice(0, 5);
 
   return (
-    <footer className="bg-[#0F172B] text-white">
-      <div className="container-djondzo grid gap-12 py-14 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
+    <footer className="border-t border-[var(--color-border)] bg-[var(--color-text)] text-white">
+      <div className="container-djondzo grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Brand inverse />
-          <p className="mt-5 max-w-[60ch] text-sm leading-6 text-white/70">
+          <p className="mt-4 max-w-[46ch] text-base leading-6 text-[var(--color-on-dark)]">
             Sistema de gestão escolar para ligar as rotinas académicas,
             administrativas e financeiras numa única plataforma.
           </p>
-          <span className="mt-6 inline-flex rounded-full border border-white/10 px-3 py-2 text-xs font-bold text-[#C7D2FE]">
-            {siteConfig.location}
-          </span>
+          <p className="mt-4 text-base text-[var(--color-on-dark-muted)]">{siteConfig.location}</p>
         </div>
 
         <div>
-          <p className="text-sm font-bold">Produto</p>
-          <div className="mt-4 grid gap-3 text-sm text-white/60">
+          <p className="text-base font-semibold">Produto</p>
+          <div className="mt-4 grid gap-2 text-base text-[var(--color-on-dark)]">
             <Link className="hover:text-white" href="/funcionalidades">Funcionalidades</Link>
             <Link className="hover:text-white" href="/precos">Preços</Link>
             <Link className="hover:text-white" href="/app-mobile">Aplicação móvel</Link>
@@ -33,14 +30,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-bold">Soluções</p>
-          <div className="mt-4 grid gap-3 text-sm text-white/60">
+          <p className="text-base font-semibold">Soluções</p>
+          <div className="mt-4 grid gap-2 text-base text-[var(--color-on-dark)]">
             {topSolutions.map((solution) => (
-              <Link
-                className="hover:text-white"
-                href={`/${solution.slug}`}
-                key={solution.slug}
-              >
+              <Link className="hover:text-white" href={`/${solution.slug}`} key={solution.slug}>
                 {solution.eyebrow}
               </Link>
             ))}
@@ -48,11 +41,9 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-bold">Contactos</p>
-          <div className="mt-4 grid gap-3 text-sm text-white/60">
-            <Link className="inline-flex items-center gap-1 hover:text-white" href="/contactos">
-              Pedir demonstração <ArrowUpRight size={13} />
-            </Link>
+          <p className="text-base font-semibold">Contactos</p>
+          <div className="mt-4 grid gap-2 text-base text-[var(--color-on-dark)]">
+            <Link className="hover:text-white" href="/contactos">Pedir demonstração</Link>
             <a className="break-all hover:text-white" href={`mailto:${siteConfig.contactEmail}`}>
               {siteConfig.contactEmail}
             </a>
@@ -62,7 +53,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-djondzo flex flex-col gap-3 py-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-djondzo flex flex-col gap-2 py-5 text-xs text-[var(--color-on-dark-muted)] sm:flex-row sm:items-center sm:justify-between">
           <span>© {year} Djondzo. Todos os direitos reservados.</span>
           <span>Sistema de gestão escolar</span>
         </div>
