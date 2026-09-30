@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Djondzo Escolar — Sistema de Gestão Escolar",
+    default: "Djondzo Escolar — Sistema de Gestão Escolar em Moçambique",
     template: "%s | Djondzo Escolar",
   },
   description: siteConfig.description,
@@ -17,6 +17,15 @@ export const metadata: Metadata = {
   creator: "Djondzo",
   publisher: "Djondzo",
   category: "education",
+  keywords: [
+    "sistema de gestão escolar",
+    "software para escolas",
+    "gestão escolar Moçambique",
+    "mensalidades escolares",
+    "notas escolares",
+    "assiduidade escolar",
+    "Djondzo Escolar",
+  ],
   alternates: {
     canonical: "/",
   },
@@ -39,18 +48,27 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#155DFC",
+  colorScheme: "light",
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang={siteConfig.language}>
       <body>
+        <a href="#main-content" className="skip-link">
+          Saltar para o conteúdo
+        </a>
         <JsonLd />
         <Header />
         {children}
