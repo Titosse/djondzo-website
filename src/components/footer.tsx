@@ -27,7 +27,9 @@ export function Footer() {
           <p className="text-sm font-semibold">Acesso</p>
           <div className="mt-4 flex flex-col gap-3 text-sm text-[#667085]">
             <a href={siteConfig.appUrl}>Entrar no Djondzo</a>
-            <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+            <a href={`mailto:${siteConfig.contactEmail}`}>
+              {siteConfig.contactEmail}
+            </a>
           </div>
         </div>
       </div>

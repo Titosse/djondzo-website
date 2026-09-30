@@ -1,0 +1,17 @@
+# Djondzo Escolar
+Official website: https://djondzo.co.mz/
+Djondzo Escolar is a school management system focused on academic, administrative and financial workflows for schools.
+Core public pages:
+- https://djondzo.co.mz/funcionalidades
+- https://djondzo.co.mz/gestao-academica
+- https://djondzo.co.mz/gestao-financeira
+- https://djondzo.co.mz/assiduidade
+- https://djondzo.co.mz/mediateca
+- https://djondzo.co.mz/professores
+- https://djondzo.co.mz/alunos
+- https://djondzo.co.mz/app-mobile
+- https://djondzo.co.mz/whatsapp
+- https://djondzo.co.mz/precos
+- https://djondzo.co.mz/blog
+Primary language: Portuguese (Mozambique).
+Market: Mozambique.

@@ -41,11 +41,16 @@ export function ProductPreview() {
           <div className="rounded-2xl bg-[#f1f3f6] p-5 text-[#111827]">
             <p className="text-sm font-semibold">Hoje</p>
             <div className="mt-4 space-y-3">
-              {["Aulas e horários", "Mensalidades", "Tarefas pendentes"].map((item) => (
-                <div key={item} className="rounded-xl bg-white px-3 py-3 text-xs font-medium">
-                  {item}
-                </div>
-              ))}
+              {["Aulas e horários", "Mensalidades", "Tarefas pendentes"].map(
+                (item) => (
+                  <div
+                    key={item}
+                    className="rounded-xl bg-white px-3 py-3 text-xs font-medium"
+                  >
+                    {item}
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </div>
