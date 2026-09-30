@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { ContactForm } from "@/components/contact-form";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contactos",
-  description: "Contacte a equipa do Djondzo e solicite uma demonstração do sistema.",
+  description: "Contacte o Djondzo Escolar e solicite uma demonstração.",
   alternates: { canonical: "/contactos" },
 };
 
@@ -14,47 +15,84 @@ export default function ContactosPage() {
     : null;
 
   return (
-    <main className="section-space">
-      <div className="container-djondzo grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <main id="main-content" className="section-space bg-[#F8FAFC]">
+      <div className="container-djondzo grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8b6722]">Contactos</p>
-          <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-[-0.045em] sm:text-6xl">
-            Vamos mostrar como o Djondzo funciona.
+          <p className="eyebrow">Contactos</p>
+          <h1 className="display-title mt-4 max-w-2xl text-5xl font-extrabold text-[#0F172B] sm:text-6xl">
+            Mostre-nos como a sua escola trabalha.
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-[#667085]">
-            Entre em contacto para solicitar uma demonstração e apresentar as necessidades da sua escola.
+          <p className="mt-6 max-w-xl text-lg leading-8 text-[#64748B]">
+            A demonstração é orientada pelos módulos que realmente interessam à
+            instituição.
           </p>
-        </div>
 
-        <div className="grid gap-4">
-          <a
-            href={`mailto:${siteConfig.contactEmail}`}
-            className="rounded-[28px] border border-black/10 bg-white p-7 transition hover:border-black/15"
-          >
-            <Mail size={24} />
-            <p className="mt-6 text-sm font-semibold">E-mail</p>
-            <p className="mt-2 text-sm text-[#667085]">{siteConfig.contactEmail}</p>
-          </a>
-
-          {whatsappLink ? (
+          <div className="mt-9 grid gap-3">
             <a
-              href={whatsappLink}
-              className="rounded-[28px] border border-black/10 bg-white p-7 transition hover:border-black/15"
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="group flex min-h-20 items-center gap-4 rounded-[22px] border border-[#DCE3ED] bg-white p-4 transition hover:border-[#C7D2FE]"
             >
-              <MessageCircle size={24} />
-              <p className="mt-6 text-sm font-semibold">WhatsApp</p>
-              <p className="mt-2 text-sm text-[#667085]">Falar com a equipa do Djondzo</p>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC] transition group-hover:bg-[#155DFC] group-hover:text-white">
+                <Mail size={19} />
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-extrabold text-[#0F172B]">E-mail</p>
+                <p className="mt-1 break-all text-sm text-[#64748B]">
+                  {siteConfig.contactEmail}
+                </p>
+              </div>
             </a>
-          ) : (
-            <div className="rounded-[28px] border border-dashed border-black/12 bg-[#f1f3f6] p-7">
-              <MessageCircle size={24} />
-              <p className="mt-6 text-sm font-semibold">WhatsApp</p>
-              <p className="mt-2 text-sm leading-6 text-[#667085]">
-                Configure NEXT_PUBLIC_WHATSAPP para activar este contacto.
-              </p>
+
+            {whatsappLink ? (
+              <a
+                href={whatsappLink}
+                className="group flex min-h-20 items-center gap-4 rounded-[22px] border border-[#DCE3ED] bg-white p-4 transition hover:border-[#C7D2FE]"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC] transition group-hover:bg-[#155DFC] group-hover:text-white">
+                  <MessageCircle size={19} />
+                </span>
+                <div>
+                  <p className="text-xs font-extrabold text-[#0F172B]">
+                    WhatsApp
+                  </p>
+                  <p className="mt-1 text-sm text-[#64748B]">
+                    Falar com a equipa Djondzo
+                  </p>
+                </div>
+              </a>
+            ) : (
+              <div className="flex min-h-20 items-center gap-4 rounded-[22px] border border-dashed border-[#DCE3ED] bg-white/65 p-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F4F7FB] text-[#64748B]">
+                  <MessageCircle size={19} />
+                </span>
+                <div>
+                  <p className="text-xs font-extrabold text-[#0F172B]">
+                    WhatsApp
+                  </p>
+                  <p className="mt-1 text-sm text-[#64748B]">
+                    Configure NEXT_PUBLIC_WHATSAPP para activar este contacto.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="flex min-h-20 items-center gap-4 rounded-[22px] border border-[#DCE3ED] bg-white p-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC]">
+                <MapPin size={19} />
+              </span>
+              <div>
+                <p className="text-xs font-extrabold text-[#0F172B]">
+                  Mercado principal
+                </p>
+                <p className="mt-1 text-sm text-[#64748B]">
+                  {siteConfig.location}
+                </p>
+              </div>
             </div>
-          )}
+          </div>
         </div>
+
+        <ContactForm />
       </div>
     </main>
   );
