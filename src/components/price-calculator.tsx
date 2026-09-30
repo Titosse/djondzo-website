@@ -18,8 +18,8 @@ export function PriceCalculator() {
           <Calculator size={21} />
         </span>
         <div>
-          <p className="text-sm font-extrabold text-[#0F172B]">Calcule o valor mensal</p>
-          <p className="mt-1 text-sm leading-6 text-[#64748B]">
+          <p className="text-sm font-bold text-[#0F172B]">Calcule o valor mensal</p>
+          <p className="mt-1 text-base leading-7 text-[#52617A]">
             Use o número de alunos cadastrados para obter uma estimativa simples.
           </p>
         </div>
@@ -44,7 +44,7 @@ export function PriceCalculator() {
 
       <div className="mt-6 rounded-[22px] border border-[#C7D2FE] bg-[#EEF3FF] p-5">
         <p className="text-xs font-bold text-[#64748B]">Estimativa mensal</p>
-        <p className="mt-2 text-3xl font-extrabold tracking-[-0.045em] text-[#0F172B] sm:text-4xl">
+        <p className="mt-2 text-[clamp(1.75rem,3vw,2.25rem)] font-bold tracking-[-0.03em] text-[#0F172B]">
           {new Intl.NumberFormat("pt-MZ").format(total)} MT
         </p>
         <p className="mt-2 text-xs font-semibold text-[#64748B]">

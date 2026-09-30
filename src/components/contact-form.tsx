@@ -4,8 +4,7 @@ import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
-const fieldClass =
-  "h-13 rounded-2xl border border-[#DCE3ED] bg-[#F8FAFC] px-4 text-sm font-semibold text-[#0F172B] outline-none transition placeholder:text-[#94A3B8] focus:border-[#155DFC] focus:bg-white";
+const fieldClass = "form-control";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -33,16 +32,16 @@ export function ContactForm() {
       className="rounded-[32px] border border-[#DCE3ED] bg-white p-6 shadow-[0_18px_48px_rgba(15,23,43,0.08)] sm:p-8"
     >
       <div className="mb-7">
-        <p className="text-lg font-extrabold tracking-[-0.025em] text-[#0F172B]">
+        <p className="ui-h2">
           Pedir demonstração
         </p>
-        <p className="mt-2 text-sm leading-6 text-[#64748B]">
+        <p className="ui-body mt-2">
           Preencha os dados essenciais. O pedido será preparado no seu programa de e-mail.
         </p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <label className="grid gap-2 text-xs font-bold text-[#475569]">
+        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A]">
           Nome
           <input
             name="name"
@@ -52,7 +51,7 @@ export function ContactForm() {
             placeholder="O seu nome"
           />
         </label>
-        <label className="grid gap-2 text-xs font-bold text-[#475569]">
+        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A]">
           Escola
           <input
             name="school"
@@ -62,7 +61,7 @@ export function ContactForm() {
             placeholder="Nome da escola"
           />
         </label>
-        <label className="grid gap-2 text-xs font-bold text-[#475569] sm:col-span-2">
+        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A] sm:col-span-2">
           Telefone / WhatsApp
           <input
             name="phone"
@@ -72,12 +71,12 @@ export function ContactForm() {
             placeholder="+258 84 000 0000"
           />
         </label>
-        <label className="grid gap-2 text-xs font-bold text-[#475569] sm:col-span-2">
+        <label className="grid gap-2 text-[0.8125rem] font-semibold text-[#52617A] sm:col-span-2">
           O que gostaria de organizar?
           <textarea
             name="message"
             rows={5}
-            className="rounded-2xl border border-[#DCE3ED] bg-[#F8FAFC] px-4 py-3 text-sm font-semibold text-[#0F172B] outline-none transition placeholder:text-[#94A3B8] focus:border-[#155DFC] focus:bg-white"
+            className="form-control min-h-[128px] py-3"
             placeholder="Conte-nos brevemente como a sua escola trabalha hoje."
           />
         </label>
@@ -85,7 +84,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[18px] bg-[#155DFC] px-5 text-sm font-bold text-white shadow-[0_14px_34px_rgba(21,93,252,0.22)] transition hover:bg-[#0F52E8]"
+        className="btn-primary mt-6 w-full"
       >
         Preparar pedido por e-mail
         <ArrowRight size={16} />
@@ -93,7 +92,7 @@ export function ContactForm() {
 
       <div aria-live="polite">
         {sent && (
-          <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-[#64748B]">
+          <p className="mt-4 flex items-start gap-2 text-[0.8125rem] leading-5 text-[#71809A]">
             <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-[#155DFC]" />
             O seu programa de e-mail será aberto com os dados preenchidos.
           </p>

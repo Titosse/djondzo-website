@@ -72,10 +72,7 @@ export default function HomePage() {
   return (
     <main id="main-content">
       <section className="relative overflow-hidden border-b border-[#DCE3ED] bg-[#F8FAFC]">
-        <div
-          className="absolute inset-0 soft-grid opacity-60"
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 soft-grid opacity-60" aria-hidden="true" />
         <div
           className="absolute left-[4%] top-24 h-28 w-28 rounded-[32px] bg-[#EEF3FF] lg:h-36 lg:w-36"
           aria-hidden="true"
@@ -85,18 +82,18 @@ export default function HomePage() {
           aria-hidden="true"
         />
 
-        <div className="container-djondzo relative grid min-h-[760px] items-center gap-14 py-16 lg:grid-cols-[0.88fr_1.12fr] lg:py-20">
-          <div className="max-w-2xl">
+        <div className="container-djondzo relative grid grid-cols-4 items-center gap-8 py-16 lg:min-h-[720px] lg:grid-cols-12 lg:gap-12 lg:py-20">
+          <div className="col-span-4 max-w-2xl lg:col-span-5">
             <div className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#C7D2FE] bg-white px-4 text-xs font-bold text-[#475569] shadow-[0_6px_18px_rgba(15,23,43,0.04)]">
               <span className="h-2 w-2 rounded-full bg-[#155DFC]" />
               Gestão escolar para Moçambique
             </div>
 
-            <h1 className="display-title mt-7 text-5xl font-extrabold text-[#0F172B] sm:text-6xl lg:text-[4.75rem]">
+            <h1 className="ui-h1 mt-7 max-w-[15ch]">
               A escola inteira, ligada no mesmo sistema.
             </h1>
 
-            <p className="mt-7 max-w-xl text-lg leading-8 text-[#64748B]">
+            <p className="ui-body mt-6 max-w-[66ch]">
               O Djondzo reúne gestão académica, secretaria, contabilidade,
               professores, alunos e Mediateca para reduzir trabalho repetido e
               manter a informação escolar organizada.
@@ -119,10 +116,7 @@ export default function HomePage() {
                 "Académico e financeiro ligados",
                 "Dados isolados por escola",
               ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-2.5 text-sm font-medium text-[#475569]"
-                >
+                <div key={item} className="flex items-start gap-2.5 text-base font-normal text-[#52617A]">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#EEF3FF] text-[#155DFC]">
                     <Check size={12} strokeWidth={3} />
                   </span>
@@ -132,18 +126,20 @@ export default function HomePage() {
             </div>
           </div>
 
-          <ProductPreview />
+          <div className="col-span-4 lg:col-span-7">
+            <ProductPreview />
+          </div>
         </div>
       </section>
 
       <section className="border-b border-[#E6EBF2] bg-white py-7">
         <div className="container-djondzo">
-          <p className="text-center text-xs font-extrabold uppercase tracking-[0.15em] text-[#8DA0BB]">
+          <p className="text-center text-xs font-bold uppercase tracking-[0.15em] text-[#8DA0BB]">
             Um espaço de trabalho para cada perfil
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {profiles.map((profile) => (
-              <span key={profile} className="text-sm font-bold text-[#64748B]">
+              <span key={profile} className="text-sm font-semibold text-[#52617A]">
                 {profile}
               </span>
             ))}
@@ -153,43 +149,24 @@ export default function HomePage() {
 
       <section className="section-space bg-white">
         <div className="container-djondzo">
-          <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-            <SectionHeading
+          <div className="grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-end">
+            <div className="col-span-4 lg:col-span-5">
+              <SectionHeading
               eyebrow="Porquê o Djondzo"
               title="Menos ficheiros soltos. Menos informação repetida."
               description="O valor do sistema aparece quando uma acção feita por um perfil passa a alimentar os restantes fluxos que realmente precisam dela."
-            />
-            <div className="grid gap-3 sm:grid-cols-3">
+              />
+            </div>
+            <div className="col-span-4 grid gap-3 sm:grid-cols-3 lg:col-span-7">
               {[
-                [
-                  "01",
-                  "Registar uma vez",
-                  "O aluno não precisa ser recriado em cada módulo.",
-                ],
-                [
-                  "02",
-                  "Separar permissões",
-                  "Cada função trabalha apenas com o que lhe compete.",
-                ],
-                [
-                  "03",
-                  "Acompanhar melhor",
-                  "Relatórios usam a mesma base operacional.",
-                ],
+                ["01", "Registar uma vez", "O aluno não precisa ser recriado em cada módulo."],
+                ["02", "Separar permissões", "Cada função trabalha apenas com o que lhe compete."],
+                ["03", "Acompanhar melhor", "Relatórios usam a mesma base operacional."],
               ].map(([number, title, text]) => (
-                <div
-                  key={number}
-                  className="rounded-[24px] border border-[#DCE3ED] bg-[#F8FAFC] p-5"
-                >
-                  <span className="text-xs font-extrabold text-[#155DFC]">
-                    {number}
-                  </span>
-                  <h3 className="mt-4 text-sm font-extrabold text-[#0F172B]">
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-xs leading-5 text-[#64748B]">
-                    {text}
-                  </p>
+                <div key={number} className="rounded-[24px] border border-[#DCE3ED] bg-[#F8FAFC] p-5">
+                  <span className="ui-caption text-[#155DFC]">{number}</span>
+                  <h3 className="mt-4 text-base font-semibold text-[#0F172B]">{title}</h3>
+                  <p className="mt-2 text-[0.8125rem] leading-5 text-[#71809A]">{text}</p>
                 </div>
               ))}
             </div>
@@ -215,16 +192,13 @@ export default function HomePage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF3FF] text-[#155DFC] transition group-hover:bg-[#155DFC] group-hover:text-white">
                   <Icon size={21} />
                 </div>
-                <h3 className="mt-7 text-xl font-extrabold tracking-[-0.035em] text-[#0F172B]">
+                <h3 className="mt-7 text-xl font-bold tracking-[-0.025em] text-[#0F172B]">
                   {title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-[#64748B]">{text}</p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-extrabold text-[#155DFC]">
+                <p className="mt-3 text-base leading-7 text-[#52617A]">{text}</p>
+                <div className="mt-6 flex items-center gap-2 ui-caption text-[#155DFC]">
                   Conhecer módulo
-                  <ArrowRight
-                    size={14}
-                    className="transition group-hover:translate-x-1"
-                  />
+                  <ArrowRight size={14} className="transition group-hover:translate-x-1" />
                 </div>
               </Link>
             ))}
@@ -233,8 +207,8 @@ export default function HomePage() {
       </section>
 
       <section className="section-space bg-[#0F172B] text-white">
-        <div className="container-djondzo grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
-          <div>
+        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
+          <div className="col-span-4 lg:col-span-5">
             <SectionHeading
               eyebrow="Uma base comum"
               title="Cada equipa vê o que precisa. Os dados continuam ligados."
@@ -253,7 +227,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-4 sm:p-6">
+          <div className="col-span-4 rounded-[24px] border border-white/10 bg-white/[0.04] p-4 sm:p-6 lg:col-span-7">
             <div className="grid gap-3 sm:grid-cols-2">
               {[
                 {
@@ -276,12 +250,10 @@ export default function HomePage() {
                 <div
                   key={item.title}
                   className={`rounded-[22px] p-5 ${
-                    index === 0
-                      ? "bg-[#155DFC] text-white"
-                      : "bg-white text-[#0F172B]"
+                    index === 0 ? "bg-[#155DFC] text-white" : "bg-white text-[#0F172B]"
                   }`}
                 >
-                  <p className="text-sm font-extrabold">{item.title}</p>
+                  <p className="text-sm font-bold">{item.title}</p>
                   <p
                     className={`mt-2 text-xs leading-5 ${
                       index === 0 ? "text-white/75" : "text-[#64748B]"
@@ -297,15 +269,15 @@ export default function HomePage() {
       </section>
 
       <section className="section-space bg-white">
-        <div className="container-djondzo grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="rounded-[32px] border border-[#DCE3ED] bg-[#F8FAFC] p-5 shadow-[0_18px_48px_rgba(15,23,43,0.07)] sm:p-7">
+        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
+          <div className="col-span-4 rounded-[24px] border border-[#DCE3ED] bg-[#F8FAFC] p-5 shadow-[0_18px_48px_rgba(15,23,43,0.07)] sm:p-7 lg:col-span-7">
             <div className="rounded-[26px] border border-[#E3E8F0] bg-white p-5 sm:p-6">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#8DA0BB]">
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8DA0BB]">
                     Financeiro
                   </p>
-                  <p className="mt-1 text-base font-extrabold text-[#0F172B]">
+                  <p className="mt-1 text-base font-bold text-[#0F172B]">
                     Recebimentos do mês
                   </p>
                 </div>
@@ -326,26 +298,16 @@ export default function HomePage() {
                       index === 1 ? "bg-[#EEF3FF]" : "bg-[#F8FAFC]"
                     }`}
                   >
-                    <p className="text-[9px] font-semibold text-[#8DA0BB]">
-                      {label}
-                    </p>
-                    <p className="mt-1 text-sm font-extrabold text-[#0F172B]">
-                      {value}
-                    </p>
+                    <p className="text-xs font-semibold text-[#8DA0BB]">{label}</p>
+                    <p className="mt-1 text-sm font-bold text-[#0F172B]">{value}</p>
                   </div>
                 ))}
               </div>
 
               <div className="mt-5 space-y-2.5">
                 {[76, 58, 86, 66].map((width, index) => (
-                  <div
-                    key={index}
-                    className="rounded-xl border border-[#E6EBF2] p-3"
-                  >
-                    <div
-                      className="h-2 rounded-full bg-[#DCE3ED]"
-                      style={{ width: `${width}%` }}
-                    />
+                  <div key={index} className="rounded-xl border border-[#E6EBF2] p-3">
+                    <div className="h-2 rounded-full bg-[#DCE3ED]" style={{ width: `${width}%` }} />
                     <div className="mt-2 h-1.5 w-20 rounded-full bg-[#EEF2F6]" />
                   </div>
                 ))}
@@ -353,17 +315,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          <SectionHeading
+          <div className="col-span-4 lg:col-span-5">
+            <SectionHeading
             eyebrow="Financeiro"
             title="Cobrança e recebimento sem perder o contexto do aluno."
             description="Mensalidades, pagamentos, recibos, despesas e salários podem ser acompanhados dentro da mesma operação escolar."
-          />
+            />
+          </div>
         </div>
       </section>
 
       <section className="section-space bg-[#F8FAFC]">
-        <div className="container-djondzo grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
+        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
+          <div className="col-span-4 lg:col-span-5">
             <SectionHeading
               eyebrow="Djondzo Mobile"
               title="A informação escolar também acompanha o aluno."
@@ -388,24 +352,21 @@ export default function HomePage() {
             </div>
             <Link
               href="/app-mobile"
-              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-extrabold text-[#155DFC]"
+              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-bold text-[#155DFC]"
             >
               Conhecer aplicação móvel
               <ArrowRight size={15} />
             </Link>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[600px] rounded-[34px] border border-[#C7D2FE] bg-[#EEF3FF] p-8 sm:p-12">
-            <div
-              className="absolute left-7 top-7 h-14 w-14 rounded-2xl bg-white/70"
-              aria-hidden="true"
-            />
+          <div className="relative col-span-4 mx-auto w-full max-w-[600px] rounded-[24px] border border-[#C7D2FE] bg-[#EEF3FF] p-8 sm:p-12 lg:col-span-7">
+            <div className="absolute left-7 top-7 h-14 w-14 rounded-2xl bg-white/70" aria-hidden="true" />
             <div className="mx-auto max-w-[274px] rounded-[40px] border-[9px] border-[#0F172B] bg-white p-3 shadow-[0_28px_70px_rgba(15,23,43,0.20)]">
               <div className="rounded-[28px] bg-[#155DFC] p-5 text-white">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-[10px] text-white/65">Bom dia</p>
-                    <p className="mt-1 text-base font-extrabold">Aluno</p>
+                    <p className="text-xs text-white/65">Bom dia</p>
+                    <p className="mt-1 text-base font-bold">Aluno</p>
                   </div>
                   <Smartphone size={18} className="text-[#C7D2FE]" />
                 </div>
@@ -416,28 +377,23 @@ export default function HomePage() {
                     ["Tarefas", "3"],
                     ["Disciplinas", "11"],
                   ].map(([label, value]) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl bg-white/[0.11] p-3"
-                    >
-                      <p className="text-[9px] text-white/65">{label}</p>
-                      <p className="mt-1 text-sm font-extrabold">{value}</p>
+                    <div key={label} className="rounded-2xl bg-white/[0.11] p-3">
+                      <p className="text-xs text-white/65">{label}</p>
+                      <p className="mt-1 text-sm font-bold">{value}</p>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="mt-3 space-y-2">
-                {["Aulas do dia", "Próximas tarefas", "Biblioteca"].map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="flex min-h-11 items-center justify-between rounded-2xl bg-[#F4F7FB] px-4 text-[10px] font-bold text-[#475569]"
-                    >
-                      {item}
-                      <ArrowRight size={11} />
-                    </div>
-                  ),
-                )}
+                {["Aulas do dia", "Próximas tarefas", "Biblioteca"].map((item) => (
+                  <div
+                    key={item}
+                    className="flex min-h-11 items-center justify-between rounded-2xl bg-[#F4F7FB] px-4 text-xs font-bold text-[#475569]"
+                  >
+                    {item}
+                    <ArrowRight size={11} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -445,8 +401,8 @@ export default function HomePage() {
       </section>
 
       <section className="section-space bg-white">
-        <div className="container-djondzo grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
+        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
+          <div className="col-span-4 lg:col-span-5">
             <SectionHeading
               eyebrow="Preço"
               title={`${siteConfig.pricePerStudent} MT por aluno cadastrado por mês.`}
@@ -459,10 +415,7 @@ export default function HomePage() {
                 "Financeiro e Mediateca",
                 "Aplicação móvel do aluno",
               ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 text-sm font-medium text-[#475569]"
-                >
+                <div key={item} className="flex items-center gap-3 text-base font-normal text-[#52617A]">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#EEF3FF] text-[#155DFC]">
                     <Check size={13} />
                   </span>
@@ -472,36 +425,36 @@ export default function HomePage() {
             </div>
             <Link
               href="/precos"
-              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-extrabold text-[#155DFC]"
+              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-bold text-[#155DFC]"
             >
               Ver condições
               <ArrowRight size={15} />
             </Link>
           </div>
-          <PriceCalculator />
+          <div className="col-span-4 lg:col-span-7">
+            <PriceCalculator />
+          </div>
         </div>
       </section>
 
       <section className="section-space bg-[#F8FAFC]">
-        <div className="container-djondzo grid gap-12 lg:grid-cols-[0.78fr_1.22fr]">
-          <div>
+        <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="col-span-4 lg:col-span-5">
             <SectionHeading
               eyebrow="Perguntas frequentes"
               title="O essencial antes de pedir uma demonstração."
               description="Respostas curtas sobre preço, perfis, aplicativo, Mediateca e organização dos dados."
             />
             <div className="mt-7 flex items-start gap-3 rounded-[22px] border border-[#C7D2FE] bg-[#EEF3FF] p-4">
-              <ShieldCheck
-                className="mt-0.5 shrink-0 text-[#155DFC]"
-                size={19}
-              />
+              <ShieldCheck className="mt-0.5 shrink-0 text-[#155DFC]" size={19} />
               <p className="text-xs leading-5 text-[#475569]">
-                O site público apresenta apenas informação comercial. Os dados
-                operacionais continuam dentro do sistema autenticado.
+                O site público apresenta apenas informação comercial. Os dados operacionais continuam dentro do sistema autenticado.
               </p>
             </div>
           </div>
-          <FAQ />
+          <div className="col-span-4 lg:col-span-7">
+            <FAQ />
+          </div>
         </div>
       </section>
 
@@ -515,7 +468,7 @@ export default function HomePage() {
             />
             <Link
               href="/blog"
-              className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl text-sm font-extrabold text-[#155DFC]"
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl text-sm font-bold text-[#155DFC]"
             >
               Ver todos
               <ArrowRight size={15} />
@@ -530,25 +483,18 @@ export default function HomePage() {
                 className="group rounded-[26px] border border-[#DCE3ED] bg-[#F8FAFC] p-6 transition hover:-translate-y-1 hover:border-[#C7D2FE] hover:bg-white hover:shadow-[0_16px_45px_rgba(15,23,43,0.07)]"
               >
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs font-extrabold text-[#155DFC]">
-                    {post.category}
-                  </p>
-                  <span className="rounded-full bg-white px-3 py-1.5 text-[10px] font-bold text-[#8DA0BB]">
+                  <p className="ui-caption text-[#155DFC]">{post.category}</p>
+                  <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-[#8DA0BB]">
                     {post.readingTime}
                   </span>
                 </div>
-                <h3 className="mt-5 text-xl font-extrabold tracking-[-0.035em] text-[#0F172B]">
+                <h3 className="mt-5 text-xl font-bold tracking-[-0.025em] text-[#0F172B]">
                   {post.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-[#64748B]">
-                  {post.description}
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-extrabold text-[#155DFC]">
+                <p className="mt-3 text-base leading-7 text-[#52617A]">{post.description}</p>
+                <div className="mt-6 flex items-center gap-2 ui-caption text-[#155DFC]">
                   Ler artigo
-                  <ArrowRight
-                    size={14}
-                    className="transition group-hover:translate-x-1"
-                  />
+                  <ArrowRight size={14} className="transition group-hover:translate-x-1" />
                 </div>
               </Link>
             ))}

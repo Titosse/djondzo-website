@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="mx-auto max-w-3xl">
             <Link
               href="/blog"
-              className="inline-flex min-h-10 items-center gap-2 rounded-xl text-xs font-extrabold text-[#155DFC]"
+              className="inline-flex min-h-10 items-center gap-2 rounded-xl text-xs font-bold text-[#155DFC]"
             >
               <ArrowLeft size={14} />
               Voltar aos recursos
@@ -90,10 +90,10 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span>{post.readingTime}</span>
             </div>
 
-            <h1 className="mt-5 text-4xl font-extrabold tracking-[-0.05em] text-[#0F172B] sm:text-6xl sm:leading-[1.02]">
+            <h1 className="ui-h1 mt-5">
               {post.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-[#64748B]">{post.description}</p>
+            <p className="ui-body mt-5">{post.description}</p>
 
             <div className="article-copy mt-12 border-t border-[#E6EBF2] pt-2">
               {post.sections.map((section) => (

@@ -16,15 +16,14 @@ export default function ContactosPage() {
 
   return (
     <main id="main-content" className="section-space bg-[#F8FAFC]">
-      <div className="container-djondzo grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-        <div>
+      <div className="container-djondzo grid grid-cols-4 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
+        <div className="col-span-4 lg:col-span-5">
           <p className="eyebrow">Contactos</p>
-          <h1 className="display-title mt-4 max-w-2xl text-5xl font-extrabold text-[#0F172B] sm:text-6xl">
+          <h1 className="ui-h1 mt-4 max-w-[16ch]">
             Mostre-nos como a sua escola trabalha.
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-[#64748B]">
-            A demonstração é orientada pelos módulos que realmente interessam à
-            instituição.
+          <p className="ui-body mt-5 max-w-[70ch]">
+            A demonstração é orientada pelos módulos que realmente interessam à instituição.
           </p>
 
           <div className="mt-9 grid gap-3">
@@ -36,10 +35,8 @@ export default function ContactosPage() {
                 <Mail size={19} />
               </span>
               <div className="min-w-0">
-                <p className="text-xs font-extrabold text-[#0F172B]">E-mail</p>
-                <p className="mt-1 break-all text-sm text-[#64748B]">
-                  {siteConfig.contactEmail}
-                </p>
+                <p className="text-xs font-bold text-[#0F172B]">E-mail</p>
+                <p className="mt-1 break-all text-sm text-[#64748B]">{siteConfig.contactEmail}</p>
               </div>
             </a>
 
@@ -52,12 +49,8 @@ export default function ContactosPage() {
                   <MessageCircle size={19} />
                 </span>
                 <div>
-                  <p className="text-xs font-extrabold text-[#0F172B]">
-                    WhatsApp
-                  </p>
-                  <p className="mt-1 text-sm text-[#64748B]">
-                    Falar com a equipa Djondzo
-                  </p>
+                  <p className="text-xs font-bold text-[#0F172B]">WhatsApp</p>
+                  <p className="mt-1 text-sm text-[#64748B]">Falar com a equipa Djondzo</p>
                 </div>
               </a>
             ) : (
@@ -66,9 +59,7 @@ export default function ContactosPage() {
                   <MessageCircle size={19} />
                 </span>
                 <div>
-                  <p className="text-xs font-extrabold text-[#0F172B]">
-                    WhatsApp
-                  </p>
+                  <p className="text-xs font-bold text-[#0F172B]">WhatsApp</p>
                   <p className="mt-1 text-sm text-[#64748B]">
                     Configure NEXT_PUBLIC_WHATSAPP para activar este contacto.
                   </p>
@@ -81,18 +72,16 @@ export default function ContactosPage() {
                 <MapPin size={19} />
               </span>
               <div>
-                <p className="text-xs font-extrabold text-[#0F172B]">
-                  Mercado principal
-                </p>
-                <p className="mt-1 text-sm text-[#64748B]">
-                  {siteConfig.location}
-                </p>
+                <p className="text-xs font-bold text-[#0F172B]">Mercado principal</p>
+                <p className="mt-1 text-sm text-[#64748B]">{siteConfig.location}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <ContactForm />
+        <div className="col-span-4 lg:col-span-7">
+          <ContactForm />
+        </div>
       </div>
     </main>
   );

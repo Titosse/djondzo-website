@@ -53,13 +53,13 @@ export function FAQ() {
               index !== 0 ? "border-t border-[#E6EBF2]" : ""
             }`}
           >
-            <summary className="flex min-h-[72px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-left text-sm font-bold text-[#0F172B] sm:text-base">
+            <summary className="flex min-h-[72px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-left text-base font-semibold text-[#0F172B]">
               {item.q}
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FB] text-lg font-light text-[#64748B] transition group-open:rotate-45 group-open:bg-[#EEF3FF] group-open:text-[#155DFC]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FB] text-lg font-normal text-[#64748B] transition group-open:rotate-45 group-open:bg-[#EEF3FF] group-open:text-[#155DFC]">
                 +
               </span>
             </summary>
-            <p className="max-w-3xl pb-6 pr-10 text-sm leading-7 text-[#64748B]">
+            <p className="max-w-3xl pb-6 pr-10 text-base leading-7 text-[#52617A]">
               {item.a}
             </p>
           </details>

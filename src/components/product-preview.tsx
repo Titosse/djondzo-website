@@ -24,12 +24,12 @@ export function ProductPreview() {
             <div className="flex items-center gap-2.5">
               <DjondzoMark size={31} />
               <div>
-                <p className="text-[10px] font-bold text-[#0F172B]">Djondzo</p>
-                <p className="text-[8px] text-[#8DA0BB]">Painel demonstrativo</p>
+                <p className="text-xs font-bold text-[#0F172B]">Djondzo</p>
+                <p className="text-xs text-[#8DA0BB]">Painel demonstrativo</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="hidden rounded-xl bg-[#F4F7FB] px-3 py-2 text-[9px] font-bold text-[#64748B] sm:inline-flex">
+              <span className="hidden rounded-xl bg-[#F4F7FB] px-3 py-2 text-xs font-bold text-[#64748B] sm:inline-flex">
                 Ano lectivo 2026
               </span>
               <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F4F7FB] text-[#64748B]">
@@ -53,7 +53,7 @@ export function ProductPreview() {
                   return (
                     <div
                       key={String(label)}
-                      className={`flex min-h-10 items-center gap-2 rounded-xl px-2.5 text-[10px] font-bold ${
+                      className={`flex min-h-10 items-center gap-2 rounded-xl px-2.5 text-xs font-bold ${
                         index === 0
                           ? "bg-[#EEF3FF] text-[#155DFC]"
                           : "text-[#7B879B]"
@@ -70,14 +70,14 @@ export function ProductPreview() {
             <div className="p-3 sm:p-5">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-[#8DA0BB]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#8DA0BB]">
                     Administração
                   </p>
-                  <p className="mt-1 text-sm font-extrabold tracking-[-0.025em] text-[#0F172B] sm:text-base">
+                  <p className="mt-1 text-sm font-bold tracking-[-0.025em] text-[#0F172B] sm:text-base">
                     Visão geral da escola
                   </p>
                 </div>
-                <div className="rounded-xl border border-[#DCE3ED] bg-white px-3 py-2 text-[9px] font-bold text-[#64748B]">
+                <div className="rounded-xl border border-[#DCE3ED] bg-white px-3 py-2 text-xs font-bold text-[#64748B]">
                   Setembro
                 </div>
               </div>
@@ -97,8 +97,8 @@ export function ProductPreview() {
                         : "border-[#E4E9F1] bg-white"
                     }`}
                   >
-                    <p className="text-[9px] font-semibold text-[#8DA0BB]">{label}</p>
-                    <p className="mt-1.5 text-base font-extrabold tracking-[-0.04em] text-[#0F172B]">
+                    <p className="text-xs font-semibold text-[#8DA0BB]">{label}</p>
+                    <p className="mt-1.5 text-base font-bold tracking-[-0.04em] text-[#0F172B]">
                       {value}
                     </p>
                   </div>
@@ -108,10 +108,10 @@ export function ProductPreview() {
               <div className="mt-3 grid gap-3 xl:grid-cols-[1.4fr_0.9fr]">
                 <div className="rounded-2xl border border-[#E4E9F1] bg-white p-4">
                   <div className="flex items-center justify-between">
-                    <p className="text-[10px] font-bold text-[#0F172B]">
+                    <p className="text-xs font-bold text-[#0F172B]">
                       Acompanhamento académico
                     </p>
-                    <p className="text-[9px] font-semibold text-[#8DA0BB]">Semana</p>
+                    <p className="text-xs font-semibold text-[#8DA0BB]">Semana</p>
                   </div>
                   <div className="mt-5 flex h-28 items-end gap-2">
                     {bars.map((height, index) => (
@@ -126,7 +126,7 @@ export function ProductPreview() {
 
                 <div className="rounded-2xl bg-[#0F172B] p-4 text-white">
                   <div className="flex items-center justify-between">
-                    <p className="text-[10px] font-bold">Hoje</p>
+                    <p className="text-xs font-bold">Hoje</p>
                     <span className="h-2 w-2 rounded-full bg-[#757DF5]" />
                   </div>
                   <div className="mt-3 space-y-2">
@@ -140,8 +140,8 @@ export function ProductPreview() {
                         className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5"
                       >
                         <div>
-                          <p className="text-[9px] font-semibold">{label}</p>
-                          <p className="mt-0.5 text-[8px] text-white/50">{value}</p>
+                          <p className="text-xs font-semibold">{label}</p>
+                          <p className="mt-0.5 text-xs text-white/50">{value}</p>
                         </div>
                         <ChevronRight size={12} className="text-white/45" />
                       </div>
@@ -152,8 +152,8 @@ export function ProductPreview() {
 
               <div className="mt-3 rounded-2xl border border-[#E4E9F1] bg-white p-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-[10px] font-bold text-[#0F172B]">Actividade recente</p>
-                  <span className="text-[9px] font-bold text-[#155DFC]">Ver tudo</span>
+                  <p className="text-xs font-bold text-[#0F172B]">Actividade recente</p>
+                  <span className="text-xs font-bold text-[#155DFC]">Ver tudo</span>
                 </div>
                 <div className="mt-3 space-y-2">
                   {[1, 2, 3].map((item) => (
@@ -181,8 +181,8 @@ export function ProductPreview() {
           <CalendarCheck2 size={17} />
         </span>
         <div>
-          <p className="text-[10px] font-bold text-[#0F172B]">Dados ligados</p>
-          <p className="text-[9px] text-[#8DA0BB]">Académico + financeiro</p>
+          <p className="text-xs font-bold text-[#0F172B]">Dados ligados</p>
+          <p className="text-xs text-[#8DA0BB]">Académico + financeiro</p>
         </div>
       </div>
     </div>

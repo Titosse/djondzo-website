@@ -13,7 +13,7 @@ export function Footer() {
       <div className="container-djondzo grid gap-12 py-14 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
         <div>
           <Brand inverse />
-          <p className="mt-5 max-w-sm text-sm leading-6 text-white/60">
+          <p className="mt-5 max-w-[60ch] text-sm leading-6 text-white/70">
             Sistema de gestão escolar para ligar as rotinas académicas,
             administrativas e financeiras numa única plataforma.
           </p>

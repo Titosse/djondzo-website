@@ -45,7 +45,7 @@ export function Brand({
     >
       <DjondzoMark size={compact ? 38 : 44} />
       <span
-        className={`font-extrabold tracking-[-0.045em] ${
+        className={`font-bold tracking-[-0.03em] ${
           compact ? "text-lg" : "text-xl"
         } ${inverse ? "text-white" : "text-[#0F172B]"}`}
       >

@@ -12,7 +12,7 @@ export function CTA() {
           <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="eyebrow !text-[#C7D2FE]">Demonstração</p>
-              <h2 className="mt-4 text-4xl font-extrabold tracking-[-0.05em] sm:text-5xl lg:text-[3.5rem] lg:leading-[1.02]">
+              <h2 className="ui-h2 mt-4 !text-white">
                 Veja o Djondzo aplicado à rotina da sua escola.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/65">
